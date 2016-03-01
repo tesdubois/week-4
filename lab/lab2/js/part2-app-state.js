@@ -29,12 +29,19 @@
        }
        var one = justOne();
 ===================== */
+var myData; $.ajax(url).done(function(d) { myData = JSON.parse(d); });
+var downloadData = $.ajax("https://raw.githubusercontent.com/CPLN690-MUSA610/datasets/master/json/philadelphia-bike-crashes-snippet.json").done(function(result));
+var parseData = function(data) {
+  return JSON.parse(data);
+};
 
-var downloadData = $.ajax("");
-var parseData = function() {};
-var makeMarkers = function() {};
-var plotMarkers = function() {};
+var makeMarkers = function(parsed) {
+    return L.marker([data.LAT, data.LNG]);
+};
 
+var plotMarkers = function(markers) {
+  return markers.addTo(map);
+};
 
 /* =====================
   Define the function removeData so that it clears the markers you've written

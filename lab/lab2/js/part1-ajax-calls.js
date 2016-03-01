@@ -10,7 +10,12 @@
 
   This recipe, given to underscore's _.filter will return only the elements we want.
 ===================== */
-var isLengthOfFiveOrMore = function(str) {};
+var isLengthOfFiveOrMore = function(str) {
+  if (str.length >=5) {
+    return true;
+  }
+};
+console.log(isLengthOfFiveOrMore("I love my pants"));
 
 console.log("isLengthOfFiveOrMore success:",
   _.isEqual(_.filter(['this', 'is','a', 'test', 'testing'], isLengthOfFiveOrMore), ['testing']));
@@ -21,15 +26,17 @@ console.log("isLengthOfFiveOrMore success:",
   function you write along with underscore's _.each to log the double of every
   number in the provided array.
 ===================== */
-var logDouble = function(num) {};
 var theArray = [1, 5, 20, 100];
-
+var logDouble = function(num) {
+  console.log(num * 2);
+};
+_.each(theArray, logDouble);
 
 /* =====================
   Given this already defined function, define fizzbuzzArray so that, when mapped
   over, it will equal ['fizz', 'buzz', 'fizzbuzz'];
 ===================== */
-var fizzbuzzArray = [];
+var fizzbuzzArray = [3, 5, 15];
 var fizzbuzzFunc = function(num) {
   var str = '';
   if (num % 3 === 0) { str = 'fizz'; }
@@ -83,6 +90,14 @@ console.log("fizzbuzz success:",
 var phillySolarInstallationDataUrl = "https://raw.githubusercontent.com/CPLN690-MUSA610/datasets/master/json/philadelphia-solar-installations.json";
 var phillyCrimeDataUrl = "https://raw.githubusercontent.com/CPLN690-MUSA610/datasets/master/json/philadelphia-crime-snippet.json";
 var phillyBikeCrashesDataUrl = "https://raw.githubusercontent.com/CPLN690-MUSA610/datasets/master/json/philadelphia-bike-crashes-snippet.json";
+var test;
+$.ajax("https://raw.githubusercontent.com/CPLN690-MUSA610/datasets/master/json/philadelphia-bike-crashes-snippet.json").done(function(result) {
+  console.log(JSON.parse(result));
+  test = JSON.parse(result);
+  console.log(1, test);
+  plotEachOne(JSON.parse(result));
+});
+console.log(2, test);
 
 
 /* =====================
@@ -99,3 +114,50 @@ var phillyBikeCrashesDataUrl = "https://raw.githubusercontent.com/CPLN690-MUSA61
   Now that you've properly parsed your data, use _.each to plot the
   dataset you've pulled down.
 ===================== */
+// var newArray = [];
+//
+// var pushGreaterThan10 = function(data) {
+//   if (data > 10) {
+//     console.log('greater than 10');
+//     newArray.push(data);
+//   }
+// };
+//
+// var filterOutLessThan10 = function(arr) {
+//   _.each(arr, pushGreaterThan10);
+//   console.log(newArray);
+// };
+// var arr = [100, 2, 17, 1];
+// filterOutLessThan10(arr);
+// <script>
+  var map = L.map('map', {
+    center: [39.9522, -75.1639],
+    zoom: 14
+  });
+  var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    subdomains: 'abcd',
+    minZoom: 0,
+    maxZoom: 20,
+    ext: 'png'
+  }).addTo(map);
+  L.marker([50.5, 30.5]).addTo(map);
+// </script>
+// </body>
+// // </html>
+//     var map = L.map('map', {
+//         center: [39.9522, -75.1639],
+//         zoom: 14
+//       });
+//
+var arrayOfLoc = [];
+var plotMarkers = function(data) {
+  console.log([data.LAT, data.LNG]);
+  L.marker([data.LAT, data.LNG]).addTo(map);
+  // L.marker(data(["LAT", "LNG"]));
+  // arrayOfLoc.push(data("LAT", "LNG"));
+};
+var plotEachOne = function(result) {
+  console.log(3, result);
+  _.each(result, plotMarkers);
+};

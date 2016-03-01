@@ -43,10 +43,44 @@
     <!-- Sidebar -->
     <div class="sidebar">
 
-      <!-- =====================
-      Add HTML!
-      ====================== -->
-
+    <link type="text/css" rel="main" href="main.css"/>
+          <body>
+          <div class = "div1">
+              <button type="button">Hide Filters</button>
+          </div>
+          <h1>Filters</h1>
+                <h3>By Name</h3>
+            <form action="demo_form.asp">
+                <input type="text">
+                <!-- <input type="submit" value="Submit"> -->
+            </form>
+          <h3>By Grade<h3>
+            <div class = "Grades">
+                <select name="grades">
+                   <option value="All Grades">All Grades</option>
+                   <option value="K-5">K-5</option>
+                   <option value="6-8">6-8</option>
+                   <option value="9-12">9-12</option>
+                  </select>
+              </div>
+              <hr>
+          <h1>Schools<h1>
+            <div style="width:300px; height:175px; background-color:#DCDCDC; margin-bottom: 25px">
+                <p style = "font-size: 16px"> Henry, Charles W. </p>
+                <p style = "color:gray; font-size: 16px">Elem/Middle</p>
+                <p style = "font-size: 12px">601 Carpenter Ln.<br>19119-3405</p>
+              </div>
+              <div class ="box">
+                  <p style = "font-size: 16px"> Universal Creighton Charter School </p>
+                  <p style = "color:gray; font-size: 16px">Elem/Middle</p>
+                  <p style = "font-size: 12px">5401 Tabor Ave.<br>19120-3614</p>
+                </div>
+                <div class = "box">
+                    <p style = "font-size: 16px"> Marshall, John </p>
+                    <p style = "color:gray; font-size: 16px">Elem/Middle</p>
+                    <p style = "font-size: 12px">5401 Tabor Ave.<br>19120-3614</p>
+                  </div>
+            </body>
     </div>
     <!-- Map -->
     <div id="map" class="map"></div>

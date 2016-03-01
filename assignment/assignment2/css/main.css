@@ -1,7 +1,11 @@
 body {
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
     font-family: helvetica, arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
 }
 
 /* =================
